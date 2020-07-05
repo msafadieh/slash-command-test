@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          path: ${{ github.repository_owner }}
       - name: my command
         id: step1
         run: echo ::set-output name=important_output::$(cat "${{ github.repository }}/file.txt")

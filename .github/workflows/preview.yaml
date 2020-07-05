@@ -12,7 +12,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: my command
         id: step1
-        run: echo ::set-output name=important_output::$(cat "$GITHUB_WORKSPACE/file.txt")
+        run: echo "::set-output name=important_output::$(ls)"
 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v1

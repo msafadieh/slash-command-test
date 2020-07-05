@@ -7,9 +7,10 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: my command
         id: step1
-        run: echo ::set-output name=important_output::test
+        run: echo ::set-output name=important_output::$(cat "${{ github.repository }}/file.txt")
 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v1

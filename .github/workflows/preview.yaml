@@ -12,7 +12,7 @@ jobs:
           path: ${{ github.repository_owner }}
       - name: my command
         id: step1
-        run: echo ::set-output name=important_output::$(cat "${{ github.repository }}/file.txt")
+        run: echo ::set-output name=important_output::$(cat "$GITHUB_WORKSPACE/${{ github.repository }}/file.txt")
 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v1

@@ -1,0 +1,23 @@
+on:
+  repository_dispatch:
+    types: [preview-command]
+
+jobs:
+  package:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: my command
+        id: step1
+        run: echo ::set-output:name=important_output::test
+
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
+          body: |
+            [Command run output][1]
+
+            [1]: ${{ steps.step1.outputs.important_output }}

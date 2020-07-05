@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.client_payload.pull_request.head.sha }}
       - name: my command
         id: step1
         run: echo "::set-output name=important_output::$(ls)"
